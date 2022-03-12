@@ -1,7 +1,6 @@
 import React from "react";
 import "./Acount.css";
 import backImg1 from "../Assets/backImg.jpg";
-import { Dropdown } from "react-bootstrap";
 import DropMenu from "./DropMenu";
 const Acount = () => {
   return (
@@ -17,7 +16,6 @@ const Acount = () => {
           <div className="form-content">
             <div className="login-form">
               <div className="title">Login</div>
-              <DropMenu></DropMenu>
               <form action="#">
                 <div className="input-boxes">
                   <div className="input-box">
