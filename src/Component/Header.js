@@ -19,6 +19,15 @@ function Header() {
             <a className="link me-2" href="/">
               Home
             </a>
+            <a className="link me-2" href="/donation">
+              Donation
+            </a>
+            <a className="link me-2" href="/maps">
+              Maps NearBy
+            </a>
+            <a className="link me-2" href="/account">
+              Profile
+            </a>
           </form>
         </div>
       </nav>
