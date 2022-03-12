@@ -40,10 +40,6 @@
     ]
   },
   "devDependencies": {
-<<<<<<< HEAD
     "html-loader": "^3.1.0"
-=======
-    "react-router-dom": "^6.2.2"
->>>>>>> 8b1dbf172f9e7c36f3d0b8efd53796f31eb9e596
   }
 }

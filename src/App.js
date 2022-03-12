@@ -16,10 +16,10 @@ function App() {
         <div className="containerr">
           {/* <Routes>
             <Route exact path='/'> */}
-              {/* <Acount />
+              <Acount />
               <Charity/>
               <Header></Header>
-              <HomePage /> */}
+              <HomePage />
             {/* </Route> */}
             {/* <Route exact path="/googleNearby.html" component= {nearByMaps}>
 

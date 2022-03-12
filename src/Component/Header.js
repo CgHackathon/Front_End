@@ -19,9 +19,6 @@ function Header() {
             <a className="link me-2" href="/">
               Home
             </a>
-            {/* <a className="link" href="Users/youss/Desktop/Cegedim/Front_End/src/googleNearBy.html"> 
-              NearBy Pharmacies
-            </a> */}
           </form>
         </div>
       </nav>
