@@ -1,3 +1,43 @@
+
+/* Container */
+.ContainerrA {
+  position: relative;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+/* Small */
+@media (max-width: 768px) {
+  .ContainerrA {
+    width: 100%;
+    padding: 0;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .ContainerrA {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .ContainerrA {
+    width: 1170px;
+  }
+}
+.img1{
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
 /* Google Font Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 .Logcontainer{
@@ -41,7 +81,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  background: #7d2ae8;
+  background: #685858;
   opacity: 0.5;
   z-index: 12;
 }
@@ -105,7 +145,7 @@
   bottom: 0;
   height: 3px;
   width: 25px;
-  background: #7d2ae8;
+  background: #fc0a0a;
 }
 .forms .signup-form  .title:before{
   width: 20px;
@@ -134,7 +174,7 @@
 }
 .form-content .input-box input:focus,
 .form-content .input-box input:valid{
-  border-color: #7d2ae8;
+  border-color: #970000;
 }
 .form-content .input-box i{
   position: absolute;
@@ -158,17 +198,17 @@
 }
 .forms .form-content .button input{
   color: #fff;
-  background: #7d2ae8;
+  background: #e82a2a;
   border-radius: 6px;
   padding: 0;
   cursor: pointer;
   transition: all 0.4s ease;
 }
 .forms .form-content .button input:hover{
-  background: #5b13b9;
+  background: #8f0909;
 }
 .forms .form-content label{
-  color: #5b13b9;
+  color: #b91313;
   cursor: pointer;
 }
 .forms .form-content label:hover{
