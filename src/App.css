@@ -1,0 +1,53 @@
+/* Container */
+.containerr {
+  position: relative;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+/* Small */
+@media (max-width: 768px) {
+  .containerr {
+    width: 100%;
+    padding: 0;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .containerr {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .containerr {
+    width: 1170px;
+  }
+}
+
+
+
+/* Landing */
+.landing {
+  min-height: 100vh;
+  background-color: #1f2021;
+  background-image: url("./Assets/back.jpg");
+  background-size: cover;
+  position: relative;
+  z-index: 9;
+}
+.landing .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 60%);
+  z-index: 10;
+}
