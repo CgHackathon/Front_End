@@ -14,9 +14,9 @@ const HomePage = () => {
     <div className="col">
       <div className="row justify-content-center">
           <div className="btn-group  col-md-6 p-3" role="group" aria-label="Basic mixed styles example">
-            <button type="button" className="btn btn-danger w-25">Left</button>
-            <button type="button" className="btn btn-warning w-25 ">Middle</button>
-            <button type="button" className="btn btn-success w-25 ">Right</button>
+            <button type="button" className="btn btn-danger w-25">Get Reports</button>
+            <button type="button" className="btn btn-warning w-25 ">Get Prescript </button>
+            {/* <button type="button" className="btn btn-success w-25 ">Right</button> */}
         </div>
       </div>
     <div className="row">

@@ -2,13 +2,23 @@ import React, { Component, useState } from "react";
 import "./Acount.css";
 import backImg1 from "../Assets/backImg.jpg";
 import { Dropdown } from "react-bootstrap";
-
+import axios from "axios";
 class Acount extends Component {
   state = {
     patient: true,
     Doctor: false,
     Nurse: false,
     Student: false,
+    LoginUserName: "",
+    LoginPassword: "",
+    SignupUserName: "",
+    SignupFirstName: "",
+    SignupLastName: "",
+    SignupEmail: "",
+    SignupPhone: "",
+    SignupInstitute: "",
+    SignupPassword: "",
+    Signupver: "",
   };
 
   handleDropChoose1 = () => {
@@ -43,6 +53,86 @@ class Acount extends Component {
       Student: true,
     });
   };
+  Login = () => {
+    axios
+      .post(`http://localhost:8080/auth/login`, {
+        userName: this.state.LoginUserName,
+        password: this.state.LoginPassword,
+      })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
+  };
+  SignUp = () => {
+    // const user = {
+
+    // };
+    axios
+      .post(`http://localhost:8080/auth/signUser`, {
+        userName: this.state.SignupUserName,
+        email: this.state.SignupEmail,
+        phoneNumber: this.state.SignupPhone,
+        password: this.state.SignupPassword,
+        role: "Patient",
+        fname: this.state.SignupFirstName,
+        lname: this.state.SignupLastName,
+      })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
+  };
+  getInputValueLoginUserName = (event) => {
+    this.setState({
+      LoginUserName: event.target.value,
+    });
+  };
+  getInputValueLoginPassword = (event) => {
+    this.setState({
+      LoginPassword: event.target.value,
+    });
+  };
+  getInputValueSignupUserName = (event) => {
+    this.setState({
+      SignupUserName: event.target.value,
+    });
+  };
+  getInputValueSignupFirstName = (event) => {
+    this.setState({
+      SignupFirstName: event.target.value,
+    });
+  };
+  getInputValueSignupLastName = (event) => {
+    this.setState({
+      SignupLastName: event.target.value,
+    });
+  };
+  getInputValueSignupEmail = (event) => {
+    this.setState({
+      SignupEmail: event.target.value,
+    });
+  };
+  getInputValueSignupPhone = (event) => {
+    this.setState({
+      SignupPhone: event.target.value,
+    });
+  };
+  getInputValueSignupInstitute = (event) => {
+    this.setState({
+      SignupInstitute: event.target.value,
+    });
+  };
+  getInputValueSignupPassword = (event) => {
+    this.setState({
+      SignupPassword: event.target.value,
+    });
+  };
+  getInputValueSignupver = (event) => {
+    this.setState({
+      Signupver: event.target.value,
+    });
+  };
   render() {
     return (
       <div className="ContainerrA">
@@ -63,6 +153,7 @@ class Acount extends Component {
                       <input
                         type="text"
                         placeholder="Enter your email"
+                        onChange={this.getInputValueLoginUserName}
                         required
                       />
                     </div>
@@ -70,11 +161,16 @@ class Acount extends Component {
                       <input
                         type="password"
                         placeholder="Enter your password"
+                        onChange={this.getInputValueLoginPassword}
                         required
                       />
                     </div>
                     <div className="button input-box">
-                      <input type="submit" value="Sumbit" />
+                      <input
+                        type="submit"
+                        value="Submit"
+                        onClick={this.Login}
+                      />
                     </div>
                     <div className="text sign-up-text">
                       Don't have an account?{" "}
@@ -111,6 +207,7 @@ class Acount extends Component {
                       <input
                         type="text"
                         placeholder="Enter your user name"
+                        onChange={this.getInputValueSignupUserName}
                         required
                       />
                     </div>
@@ -118,13 +215,15 @@ class Acount extends Component {
                       <input
                         type="text"
                         placeholder="Enter your first name"
+                        onChange={this.getInputValueSignupFirstName}
                         required
                       />
                     </div>
                     <div className="input-box">
                       <input
                         type="text"
-                        placeholder="Enter your lasr name"
+                        placeholder="Enter your last name"
+                        onChange={this.getInputValueSignupLastName}
                         required
                       />
                     </div>
@@ -132,6 +231,7 @@ class Acount extends Component {
                       <input
                         type="text"
                         placeholder="Enter your email"
+                        onChange={this.getInputValueSignupEmail}
                         required
                       />
                     </div>
@@ -139,6 +239,7 @@ class Acount extends Component {
                       <input
                         type="text"
                         placeholder="Enter your phone number"
+                        onChange={this.getInputValueSignupPhone}
                         required
                       />
                     </div>
@@ -146,6 +247,7 @@ class Acount extends Component {
                       <input
                         type="password"
                         placeholder="Enter your password"
+                        onChange={this.getInputValueSignupPassword}
                         required
                       />
                     </div>
@@ -155,6 +257,7 @@ class Acount extends Component {
                         <input
                           type="text"
                           placeholder="Enter your institution"
+                          onChange={this.getInputValueSignupInstitute}
                           required
                         />
                       </div>
@@ -164,13 +267,18 @@ class Acount extends Component {
                         <input
                           type="text"
                           placeholder="Enter your verfivication url"
+                          onChange={this.getInputValueSignupver}
                           required
                         />
                       </div>
                     ) : null}
 
                     <div className="button input-box">
-                      <input type="submit" value="Sumbit" />
+                      <input
+                        type="submit"
+                        value="Submit"
+                        onClick={this.SignUp}
+                      />
                     </div>
                     <div className="text sign-up-text">
                       Already have an account?{" "}
