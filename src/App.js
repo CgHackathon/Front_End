@@ -4,7 +4,7 @@ import Header from "../src/Component/Header";
 import Charity from "../src/Component/Charity";
 import React, { Component } from "react";
 import HomePage from "./Component/HomePage.jsx";
-import NearBy from "./Component/NearBy";
+// import NearBy from "./Component/NearBy";
 import { Switch, Route, Redirect, Routes, Link } from 'react-router-dom'
 // import nearByMaps from '../src/googleNearBy.html';
 
