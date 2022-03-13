@@ -4,7 +4,7 @@ import { Button, Modal, Form, InputGroup, FormControl } from "react-bootstrap";
 import Sidebar from "./SideBar";
 import "./HomePage.css";
 import axios from "axios";
-
+import ChatBot from "./ChatBot"
 const HomePage = () => {
   const initialValue = [];
 
@@ -234,8 +234,13 @@ const HomePage = () => {
       </div>
       <div className="row">
         <Sidebar pageInfo={pageowner}></Sidebar>
+        
         <div className="col-md-8 mt-2">
-          {SendReportShow || SendPrescriptionShow || ChatShow ? (
+          {ChatShow ?(
+            <ChatBot/>
+          ):(
+              <div>
+                {SendReportShow || SendPrescriptionShow ? (
             <Form className="text-white bg-white  bg-opacity-25 p-4">
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>To</Form.Label>
@@ -352,6 +357,9 @@ const HomePage = () => {
               </Modal>
             </div>
           )}
+              </div>
+          )}
+          
         </div>
       </div>
     </div>
