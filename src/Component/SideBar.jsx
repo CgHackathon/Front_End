@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import companyLogo from "../Assets/back.jpg";
 
-const Sidebar = () => {
+const Sidebar = ({pageInfo}) => {
   return (
     <div className="col-md-4 mt-2">
       <div className="card text-center sidebar bg-dark text-white bg-opacity-50">
@@ -12,11 +12,11 @@ const Sidebar = () => {
             className="rounded-circle"
             width="200"
           ></img>
-          <div className="mt-3">
-            <h1>Hello Ahmed</h1>
-            <h5>Email: </h5>
-            <h5>City: </h5>
-            <h5>Phone: </h5>
+          <div className="d-flex flex-column mt-3">
+            <h1>Hello {pageInfo.userName}</h1>
+            <h5>Email: {pageInfo.email}</h5>
+            <h5>Role: {pageInfo.role}</h5>
+            <h5>Phone: {pageInfo.phoneNumber}</h5>
           </div>
         </div>
       </div>

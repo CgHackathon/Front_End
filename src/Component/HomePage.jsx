@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 // import companyLogo from "../images/back.jpg";
-import companyLogo1 from "../Assets/back.jpg";
-import Carousel from "react-elastic-carousel";
 import { Button, Modal, Form } from "react-bootstrap";
 import Sidebar from "./SideBar";
 import "./HomePage.css";
@@ -17,6 +15,7 @@ const HomePage = () => {
       })
       .then((res) => {
         console.log(res);
+        setpageowner(res.data)
       });
     GetReports();
   }, []);
@@ -40,7 +39,7 @@ const HomePage = () => {
   const [repo, setShowrepo] = useState(true);
   const [reportsList, setShowrepoList] = useState(initialValue);
   const [repoShow, setrepoShow] = useState(selectedrepo);
-  const [pageowner, setpageowner] = useState(selectedrepo);
+  const [pageowner, setpageowner] = useState(selectedpageowner);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -108,7 +107,7 @@ const HomePage = () => {
         </div>
       </div>
       <div className="row">
-        <Sidebar></Sidebar>
+        <Sidebar pageInfo={pageowner}></Sidebar>
         <div className="col-md-8 mt-2">
           <div className="card text-center content bg-white text-white bg-opacity-25 mt-2">
             {!repo ? (
