@@ -75,7 +75,7 @@ const HomePage = () => {
       })
       .then((res) => {
         setShowrepoList(res.data);
-      });
+      }).catch(err => alert("Somthing Wrong"));
   };
 
   const GetPrescripts = () => {
@@ -101,7 +101,7 @@ const HomePage = () => {
       })
       .then((res) => {
         setShowrepoList(res.data);
-      });
+      }).catch(err => alert("Somthing Wrong"));
   };
 
   const Chat = () => {
@@ -156,7 +156,8 @@ const HomePage = () => {
       )
       .then((res) => {
         console.log(res);
-      });
+        alert("Operation Done")
+      }).catch(err => alert("User Not Found"));
   };
   const Tablehandle = (e) => {
     setrepoShow(e);
@@ -349,7 +350,7 @@ const HomePage = () => {
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose}>
-                    Cancle
+                    Cancel
                   </Button>
                   <Button variant="primary" onClick={handleClose}>
                     Send

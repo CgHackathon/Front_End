@@ -50,7 +50,8 @@ class Acount extends Component {
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         console.log(localStorage.getItem("token"));
-      });
+        alert("Operation Done")
+      }).catch(err => alert("Login Failed"));
   };
   SignUp = () => {
     var roleName;
@@ -67,9 +68,8 @@ class Acount extends Component {
           lname: this.state.SignupLastName,
         })
         .then((res) => {
-          console.log(res);
-          console.log(res.data);
-        });
+          alert("Operation Done Please Sign In")
+        }).catch(err => alert("SignUp Failed"));
     } else if (this.state.Doctor) {
       roleName = "Doctor";
       this.axiosPost(roleName);
@@ -94,7 +94,8 @@ class Acount extends Component {
       .then((res) => {
         console.log(res);
         console.log(res.data);
-      });
+        alert("Operation Done Please Sign In")
+      }).catch(err => alert("SignUp Failed"));
   };
   getInputValueLoginUserName = (event) => {
     this.setState({

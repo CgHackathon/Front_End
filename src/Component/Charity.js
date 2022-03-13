@@ -33,6 +33,7 @@ function Charity() {
       )
       .then((res) => {
         console.log(res);
+        alert("Operation Done")
       });
   }
 
