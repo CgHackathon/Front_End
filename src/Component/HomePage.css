@@ -1,0 +1,33 @@
+/*table*/
+.TableContent{
+    margin-top: 15px ;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  .table1 {
+    width: 100%;
+    color: #fff;
+    vertical-align: top;
+    border-color: #dee2e6;
+  }
+  thead, tbody, tfoot, tr, td, th {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+  }
+  tbody tr:hover{
+    background-color: #1f2021;
+    cursor: pointer;
+  }
+  .table1 > thead {
+    vertical-align: bottom;
+  }
+  .table1 > :not(caption) > * > * {
+    padding: 0.5rem 0.5rem;
+    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+  }
+  .table1 > :not(:first-child) {
+    border-top: 2px solid currentColor;
+  }
+  .table1 > tbody {
+    vertical-align: inherit;
+  }

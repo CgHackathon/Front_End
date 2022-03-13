@@ -60,23 +60,51 @@ class Acount extends Component {
         password: this.state.LoginPassword,
       })
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
+        localStorage.setItem("token", res.data.token);
+        console.log(localStorage.getItem("token"));
       });
   };
   SignUp = () => {
-    // const user = {
-
-    // };
+    var roleName;
+    if (this.state.patient) {
+      roleName = "Patient";
+      axios
+        .post(`http://localhost:8080/auth/signUser`, {
+          userName: this.state.SignupUserName,
+          email: this.state.SignupEmail,
+          phoneNumber: this.state.SignupPhone,
+          password: this.state.SignupPassword,
+          role: roleName,
+          fname: this.state.SignupFirstName,
+          lname: this.state.SignupLastName,
+        })
+        .then((res) => {
+          console.log(res);
+          console.log(res.data);
+        });
+    } else if (this.state.Doctor) {
+      roleName = "Doctor";
+      this.axiosPost(roleName);
+    } else if (this.state.Nurse) {
+      roleName = "Nurse";
+      this.axiosPost(roleName);
+    } else {
+      roleName = "Student";
+      this.axiosPost(roleName);
+    }
+  };
+  axiosPost = (roleName) => {
     axios
-      .post(`http://localhost:8080/auth/signUser`, {
+      .post(`http://localhost:8080/auth/signEmployee`, {
         userName: this.state.SignupUserName,
         email: this.state.SignupEmail,
         phoneNumber: this.state.SignupPhone,
         password: this.state.SignupPassword,
-        role: "Patient",
+        role: roleName,
         fname: this.state.SignupFirstName,
         lname: this.state.SignupLastName,
+        Institution: this.state.SignupInstitute,
+        verificationURL: this.state.Signupver,
       })
       .then((res) => {
         console.log(res);
