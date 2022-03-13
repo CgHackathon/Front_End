@@ -29,6 +29,7 @@ const HomePage = () => {
       })
       .then((res) => {
         console.log(res);
+        setShowrepoList(res.data)
       });
   };
   const GetMessages = () => {
@@ -43,8 +44,8 @@ const HomePage = () => {
     return (
       <tr key={Report.id} onClick={() => Tablehandle(Report)}>
         <th scope="row">{Report.id}</th>
-        <td>{Report.from}</td>
-        <td>{Report.to}</td>
+        <td>{Report.from.email}</td>
+        <td>{Report.to.email}</td>
         <td>{Report.time}</td>
       </tr>
     );
