@@ -22,10 +22,7 @@ function Header() {
             <a className="link me-2" href="/donation">
               Donation
             </a>
-            <a
-              className="link me-2"
-              href="https://google-nearby-n2ohmjy09-yousefkamal340.vercel.app/googleNearBy.html"
-            >
+            <a className="link me-2" href="https://google-nearby-n2ohmjy09-yousefkamal340.vercel.app/googleNearBy.html">
               Maps NearBy
             </a>
             <a className="link me-2" href="/account">
