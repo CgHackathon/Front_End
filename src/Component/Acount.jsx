@@ -7,7 +7,6 @@ class Acount extends Component {
   state = {
     patient: true,
     Doctor: false,
-    Nurse: false,
     Student: false,
     LoginUserName: "",
     LoginPassword: "",
@@ -25,7 +24,6 @@ class Acount extends Component {
     this.setState({
       patient: true,
       Doctor: false,
-      Nurse: false,
       Student: false,
     });
   };
@@ -33,15 +31,6 @@ class Acount extends Component {
     this.setState({
       patient: false,
       Doctor: true,
-      Nurse: false,
-      Student: false,
-    });
-  };
-  handleDropChoose3 = () => {
-    this.setState({
-      patient: false,
-      Doctor: false,
-      Nurse: true,
       Student: false,
     });
   };
@@ -49,7 +38,6 @@ class Acount extends Component {
     this.setState({
       patient: false,
       Doctor: false,
-      Nurse: false,
       Student: true,
     });
   };
@@ -84,9 +72,6 @@ class Acount extends Component {
         });
     } else if (this.state.Doctor) {
       roleName = "Doctor";
-      this.axiosPost(roleName);
-    } else if (this.state.Nurse) {
-      roleName = "Nurse";
       this.axiosPost(roleName);
     } else {
       roleName = "Student";
@@ -194,11 +179,11 @@ class Acount extends Component {
                       />
                     </div>
                     <div className="button input-box">
-                      <input
-                        type="submit"
+                    <input
+                        type="button"
                         value="Submit"
                         onClick={this.Login}
-                      />
+                      />                      
                     </div>
                     <div className="text sign-up-text">
                       Don't have an account?{" "}
@@ -221,9 +206,6 @@ class Acount extends Component {
                       </Dropdown.Item>
                       <Dropdown.Item onClick={this.handleDropChoose2}>
                         Doctor
-                      </Dropdown.Item>
-                      <Dropdown.Item onClick={this.handleDropChoose3}>
-                        Nurse
                       </Dropdown.Item>
                       <Dropdown.Item onClick={this.handleDropChoose4}>
                         Student
@@ -302,8 +284,9 @@ class Acount extends Component {
                     ) : null}
 
                     <div className="button input-box">
+                      
                       <input
-                        type="submit"
+                        type="button"
                         value="Submit"
                         onClick={this.SignUp}
                       />

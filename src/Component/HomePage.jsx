@@ -35,9 +35,12 @@ const HomePage = () => {
     to: { userName: "" },
     time: "",
   };
+  const [GetReportShow, setGetReportShow] = useState(true);
+  const [SendReportShow, setSendReportShow] = useState(false);
+  const [SendPrescriptionShow, setSendPrescriptionShow] = useState(false);
+  const [ChatShow, setChatShow] = useState(false);
+
   const [show, setShow] = useState(false);
-  const [repo, setShowrepo] = useState(true);
-  const [SendTemplete, setSendTemplete] = useState(false);
   const [reportsList, setShowrepoList] = useState(initialValue);
   const [repoShow, setrepoShow] = useState(selectedrepo);
   const [pageowner, setpageowner] = useState(selectedpageowner);
@@ -47,73 +50,126 @@ const HomePage = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleCloserepo = () => setShowrepo(false);
-  const handleShowrepo = () => setShowrepo(true);
-
   const GetReports = () => {
-    handleCloserepo();
-    setSendTemplete(false);
+    setGetReportShow(true);
+    setSendReportShow(false);
+    setSendPrescriptionShow(false);
+    setChatShow(false);
     GetReportsaxios();
   };
 
   const GetReportsaxios = () => {
-    let st=""
-    console.log(localStorage.getItem("type"))
-    if(localStorage.getItem("type") === 'Student'){
-      st="student"
+    let st = "";
+    console.log(localStorage.getItem("type"));
+    if (localStorage.getItem("type") === "Student") {
+      st = "student";
+    } else if (localStorage.getItem("type") === "Patient") {
+      st = "patient";
+    } else {
+      st = "doctor";
     }
-    else{
-      st="doctor"
-    }
-    console.log(`http://localhost:8080/`+st+`/getReport`)
+    console.log(`http://localhost:8080/` + st + `/getReport`);
     axios
-      .get(`http://localhost:8080/`+st+`/getReport`, {
+      .get(`http://localhost:8080/` + st + `/getReport`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((res) => {
         setShowrepoList(res.data);
       });
   };
-  const GetMessages = () => {
-    handleShowrepo();
-    setSendTemplete(false);
+
+  const GetPrescripts = () => {
+    /** */
+    setGetReportShow(false);
+    setSendReportShow(false);
+    setSendPrescriptionShow(false);
+    setChatShow(false);
+    /** */
+    GetPrescriptsaxios();
   };
 
-  const Tablehandle = (e) => {
-    setrepoShow(e);
-    handleShow();
+  const GetPrescriptsaxios = () => {
+    let st = "";
+    if (localStorage.getItem("type") === "Patient") {
+      st = "patient";
+    } else {
+      st = "doctor";
+    }
+    axios
+      .get(`http://localhost:8080/` + st + `/getPrescript`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then((res) => {
+        setShowrepoList(res.data);
+      });
   };
 
-  const SendMessage = () => {
-    setSendTemplete(true);
-    handleCloserepo();
+  const Chat = () => {
+    setGetReportShow(false);
+    setSendReportShow(false);
+    setSendPrescriptionShow(false);
+    setChatShow(true);
   };
 
-  const getRepoToMessage = (event) => {
-    setgetRepoTo(event.target.value);
+  const SendPrescript = () => {
+    setGetReportShow(false);
+    setSendReportShow(false);
+    setSendPrescriptionShow(true);
+    setChatShow(false);
   };
-  const getRepoToTextAreaMessage = (event) => {
-    setgetRepoToTextArea(event.target.value);
-  };
-
-  const SendReport = () => {
+  const SendPresciptionssaxios = () => {
     axios
       .post(
-        `http://localhost:8080/student/sendReport`,
+        `http://localhost:8080/doctor/sendPrescript`,
         {
           from: pageowner.userName,
           to: getRepoTo,
-          Content: getRepoToTextArea,
-          Date: new Date(),
+          content: getRepoToTextArea,
         },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
       )
       .then((res) => {
-        setShowrepoList(res.data);
+        console.log(res);
       });
   };
+  const SendReport = () => {
+    setGetReportShow(false);
+    setSendReportShow(true);
+    setSendPrescriptionShow(false);
+    setChatShow(false);
+  };
+  const SendReportaxios = () => {
+    axios
+      .post(
+        `http://localhost:8080/student/sendReport`,
+        {
+          from: pageowner.userName,
+          to: getRepoTo,
+          content: getRepoToTextArea,
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      });
+  };
+  const Tablehandle = (e) => {
+    setrepoShow(e);
+    handleShow();
+  };
+
+  const getRepoToMessage = (event) => {
+    setgetRepoTo(event.target.value);
+  };
+
+  const getRepoToTextAreaMessage = (event) => {
+    setgetRepoToTextArea(event.target.value);
+  };
+
   const reportsLists = reportsList.map((Report) => {
     return (
       <tr key={Report.id} onClick={() => Tablehandle(Report)}>
@@ -134,31 +190,52 @@ const HomePage = () => {
         >
           <button
             type="button"
-            className="btn btn-danger w-25"
+            className="btn btn-danger w-15"
             onClick={GetReports}
           >
             Get Reports
           </button>
+          {localStorage.getItem("type") !== "Student" ? (
+            <button
+              type="button"
+              className="btn btn-warning text-white  w-15 "
+              onClick={GetPrescripts}
+            >
+              Get Prescript{" "}
+            </button>
+          ) : null}
+          {localStorage.getItem("type") === "Doctor" ? (
+            <button
+              type="button"
+              className="btn btn-danger w-15 "
+              onClick={SendPrescript}
+            >
+              Send Prescript{" "}
+            </button>
+          ) : null}
+
+          {localStorage.getItem("type") === "Student" ? (
+            <button
+              type="button"
+              className="btn btn-warning w-15 "
+              onClick={SendReport}
+            >
+              Send Report
+            </button>
+          ) : null}
           <button
             type="button"
-            className="btn btn-warning w-25 "
-            onClick={GetMessages}
+            className="btn btn-success text-white w-15 "
+            onClick={Chat}
           >
-            Get Prescript{" "}
-          </button>
-          <button
-            type="button"
-            className="btn btn-success w-25 "
-            onClick={SendMessage}
-          >
-            Send Message
+            Chat
           </button>
         </div>
       </div>
       <div className="row">
         <Sidebar pageInfo={pageowner}></Sidebar>
         <div className="col-md-8 mt-2">
-          {SendTemplete ? (
+          {SendReportShow || SendPrescriptionShow || ChatShow ? (
             <Form className="text-white bg-white  bg-opacity-25 p-4">
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>To</Form.Label>
@@ -178,13 +255,19 @@ const HomePage = () => {
                   onChange={getRepoToTextAreaMessage}
                 />
               </InputGroup>
-              <Button variant="danger" onClick={SendReport}>
-                Send
-              </Button>
+              { SendReportShow ? (
+                <Button variant="danger" onClick={SendReportaxios}>
+                  Send Report
+                </Button>
+              ) : (
+                <Button variant="danger" onClick={SendPresciptionssaxios}>
+                  Send Presciption
+                </Button>
+              )}
             </Form>
           ) : (
             <div className="card text-center content bg-white text-white bg-opacity-25 mt-2">
-              {!repo ? (
+              {GetReportShow ? (
                 <h1 className="pt-3">Reports List</h1>
               ) : (
                 <h1 className="pt-3">Prescript List</h1>
@@ -204,7 +287,9 @@ const HomePage = () => {
               </div>
               <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                  <Modal.Title>{!repo ? "Report" : "Message"}</Modal.Title>
+                  <Modal.Title>
+                    {GetReportShow ? "Report" : "Message"}
+                  </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                   <Form>
@@ -244,7 +329,9 @@ const HomePage = () => {
                       className="mb-3"
                       controlId="exampleForm.ControlTextarea1"
                     >
-                      <Form.Label>{!repo ? "Report" : "Message"}</Form.Label>
+                      <Form.Label>
+                        {GetReportShow ? "Report" : "Message"}
+                      </Form.Label>
                       <Form.Control
                         as="textarea"
                         rows={3}
