@@ -20,7 +20,7 @@ function App(props) {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/maps" element={<MapsNearBy />} />
-              <Route path="/donation" element={<Charity />} />
+              <Route path="/Payment" element={<Charity />} />
               <Route path="/account" element={<Acount />} />
             </Routes>
           </BrowserRouter>

@@ -9,8 +9,8 @@ const Sidebar = ({pageInfo}) => {
           <img
             src={companyLogo}
             alt=""
-            className="rounded-circle"
-            width="200"
+            className="rounded"
+            width="250"
           ></img>
           <div className="d-flex flex-column mt-3">
             <h1>Hello {pageInfo.userName}</h1>

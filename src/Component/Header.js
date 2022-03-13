@@ -19,14 +19,14 @@ function Header() {
             <a className="link me-2" href="/">
               Home
             </a>
-            <a className="link me-2" href="/donation">
-              Donation
+            <a className="link me-2" href="/Payment">
+            Payment
             </a>
             <a className="link me-2" href="https://google-nearby-n2ohmjy09-yousefkamal340.vercel.app/googleNearBy.html">
               Maps NearBy
             </a>
             <a className="link me-2" href="/account">
-              Profile
+              Sign in / out
             </a>
           </form>
         </div>
