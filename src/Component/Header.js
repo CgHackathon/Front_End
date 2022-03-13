@@ -13,7 +13,7 @@ function Header() {
               width="40"
               className="d-inline-block align-text-top"
             />
-            <div className="LogoTitle">Banking Suit</div>
+            <div className="LogoTitle">Medical Organization</div>
           </li>
           <form className="d-flex">
             <a className="link me-2" href="/">

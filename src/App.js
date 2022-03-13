@@ -4,7 +4,7 @@ import Header from "../src/Component/Header";
 import Charity from "../src/Component/Charity";
 import React, { Component } from "react";
 import HomePage from "./Component/HomePage.jsx";
-import NearBy from "./Component/NearBy";
+// import NearBy from "./Component/NearBy";
 import { BrowserRouter, Switch, Route, Redirect, Routes, Link, Router } from 'react-router-dom'
 import MapsNearBy from "./Component/MapsNearBy";
 // import nearByMaps from '../src/googleNearBy.html';
@@ -23,7 +23,7 @@ function App(props) {
               <Route path="/donation" element={<Charity />} />
               <Route path="/account" element={<Acount />} />
             </Routes>
-          </BrowserRouter>,
+          </BrowserRouter>
         </div>
       </div>
     </div>
