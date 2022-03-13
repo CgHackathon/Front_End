@@ -103,7 +103,7 @@ class Acount extends Component {
         role: roleName,
         fname: this.state.SignupFirstName,
         lname: this.state.SignupLastName,
-        Institution: this.state.SignupInstitute,
+        institution: this.state.SignupInstitute,
         verificationURL: this.state.Signupver,
       })
       .then((res) => {

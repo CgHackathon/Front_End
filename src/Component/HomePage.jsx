@@ -23,13 +23,13 @@ const HomePage = () => {
 
   const GetReports = () => {
     handleCloserepo();
-    // axios
-    //   .post(`http://localhost:8080/doctor/getReport`, {
-    //     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    //   })
-    //   .then((res) => {
-    //     console.log(res);
-    //   });
+    axios
+      .get(`http://localhost:8080/doctor/getReport`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then((res) => {
+        console.log(res);
+      });
   };
   const GetMessages = () => {
     handleShowrepo();
