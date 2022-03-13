@@ -132,7 +132,8 @@ const HomePage = () => {
       )
       .then((res) => {
         console.log(res);
-      });
+        alert("Done")
+      }).catch(err => alert("Patient Not Found"));
   };
   const SendReport = () => {
     setGetReportShow(false);
