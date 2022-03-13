@@ -31,3 +31,6 @@
   .table1 > tbody {
     vertical-align: inherit;
   }
+  textarea {
+    height: 300px;
+  }
