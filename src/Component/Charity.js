@@ -1,6 +1,6 @@
 import { Button, Form, Dropdown } from "react-bootstrap";
 import axios from "axios";
-import { useState, useEffect, useRef } from "react";
+import { useState} from "react";
 
 function Charity() {
   const [PaymentShow, setPaymentShow] = useState(true);
